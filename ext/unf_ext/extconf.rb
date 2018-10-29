@@ -26,6 +26,13 @@ else
   end
 end
 
+
+# XXX: ruby 2.5.3 on g++ 4.8 these flags break the build
+CONFIG['warnflags'].slice!(/ -Wmisleading-indentation/)
+CONFIG['warnflags'].slice!(/ -Wimplicit-fallthrough=0/)
+CONFIG['warnflags'].slice!(/ -Wduplicated-cond/)
+CONFIG['warnflags'].slice!(/ -Wrestrict/)
+
 create_makefile 'unf_ext'
 
 unless CONFIG['CXX']
